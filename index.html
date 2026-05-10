@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MetaFrame × VELOR — Партнёрство</title>
+<style>
+@font-face {
+  font-family: 'Gilroy';
+  src: url('https://cdn.jsdelivr.net/gh/KaterinaLupacheva/fonts@master/Gilroy/Gilroy-Light.woff2') format('woff2');
+  font-weight: 300; font-style: normal;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('https://cdn.jsdelivr.net/gh/KaterinaLupacheva/fonts@master/Gilroy/Gilroy-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('https://cdn.jsdelivr.net/gh/KaterinaLupacheva/fonts@master/Gilroy/Gilroy-Medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('https://cdn.jsdelivr.net/gh/KaterinaLupacheva/fonts@master/Gilroy/Gilroy-SemiBold.woff2') format('woff2');
+  font-weight: 600; font-style: normal;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('https://cdn.jsdelivr.net/gh/KaterinaLupacheva/fonts@master/Gilroy/Gilroy-Bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('https://cdn.jsdelivr.net/gh/KaterinaLupacheva/fonts@master/Gilroy/Gilroy-ExtraBold.woff2') format('woff2');
+  font-weight: 800; font-style: normal;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:       #0a1628;
+  --navy:      #132647;
+  --navy2:     #1a3158;
+  --yellow:    #D0AD6A;
+  --yellow2:   #e8c98a;
+  --yellow-dim:#8a6e3a;
+  --cream:     #EDE6DA;
+  --muted:     #8a8070;
+  --border:    rgba(208,173,106,0.2);
+  --f:         'Gilroy', 'Nunito', system-ui, sans-serif;
+}
+
+html { scroll-snap-type: y mandatory; overflow-y: scroll; height: 100%; }
+body { background: var(--ink); color: var(--cream); font-family: var(--f); height: 100%; }
+
+/* ─── NAV ─────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 3rem;
+  background: linear-gradient(to bottom, rgba(6,11,26,0.97) 0%, transparent 100%);
+}
+.nav-logo {
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--yellow);
+}
+.nav-logo span { color: var(--cream); opacity: 0.4; margin: 0 0.4rem; }
+.nav-dots { display: flex; gap: 8px; align-items: center; }
+.nav-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--yellow-dim); cursor: pointer;
+  transition: background 0.3s, transform 0.3s; border: none;
+}
+.nav-dot.active { background: var(--yellow); transform: scale(1.4); }
+
+/* ─── BG GRID ─────────────────────────────── */
+.bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(208,173,106,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(208,173,106,0.03) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+
+/* ─── BASE SLIDE ──────────────────────────── */
+.slide {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6rem 3rem 3rem; position: relative; overflow: clip;
+}
+
+/* ─── HERO ────────────────────────────────── */
+#hero { align-items: center; text-align: center; background: var(--ink); }
+#hero::before {
+  content: ''; position: absolute; top: -20%; left: 50%;
+  transform: translateX(-50%); width: 800px; height: 800px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(208,173,106,0.07) 0%, transparent 68%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--yellow); margin-bottom: 1.5rem;
+}
+.hero-title {
+  font-size: clamp(3.2rem, 10vw, 9rem); font-weight: 800;
+  line-height: 0.92; letter-spacing: -0.03em; color: var(--cream); margin-bottom: 1rem;
+}
+.hero-title em { font-style: normal; color: var(--yellow); display: block; }
+.hero-subtitle {
+  font-size: clamp(0.9rem, 2vw, 1.25rem); font-weight: 400;
+  color: var(--muted); line-height: 1.7;
+  margin-bottom: 2.5rem; max-width: 520px;
+}
+.hero-partners { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; justify-content: center; }
+.partner-badge {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; padding: 0.55rem 1.25rem;
+  border: 1px solid var(--border); color: var(--cream);
+}
+.partner-sep { font-size: 1.75rem; color: var(--yellow); line-height: 1; }
+
+.scroll-hint {
+  position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--yellow-dim);
+}
+.scroll-arrow {
+  width: 1px; height: 36px;
+  background: linear-gradient(to bottom, transparent, var(--yellow-dim));
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 0.4; transform: scaleY(0.8); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ─── SLIDE TEXT + VISUAL LAYOUT ─────────── */
+.slide-inner {
+  max-width: 1100px; width: 100%;
+  display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center;
+}
+.slide-num {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.25em;
+  color: var(--yellow-dim); text-transform: uppercase; margin-bottom: 1.25rem;
+}
+.slide-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--yellow); margin-bottom: 0.9rem;
+}
+.slide-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--yellow); }
+
+.slide-heading {
+  font-size: clamp(2.4rem, 5.5vw, 5rem); font-weight: 800;
+  line-height: 1; letter-spacing: -0.025em; color: var(--cream); margin-bottom: 0.5rem;
+}
+.slide-heading em { font-style: normal; color: var(--yellow); display: block; }
+.slide-desc {
+  font-size: 0.95rem; font-weight: 400; color: var(--muted);
+  line-height: 1.8; margin-bottom: 1.75rem;
+}
+.benefit-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.benefit-list li {
+  display: flex; align-items: flex-start; gap: 0.7rem;
+  font-size: 0.85rem; color: var(--cream); opacity: 0.75;
+}
+.benefit-list li::before {
+  content: ''; flex-shrink: 0; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--yellow); margin-top: 0.38em;
+}
+
+/* ─── VISUAL CARD ─────────────────────────── */
+.slide-visual {
+  position: relative; height: 380px;
+  display: flex; align-items: center; justify-content: center;
+}
+.visual-card {
+  background: var(--navy2); border: 1px solid var(--border);
+  padding: 2.25rem; width: 100%; max-width: 320px; position: relative;
+}
+.visual-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 48px; height: 3px; background: var(--yellow);
+}
+.visual-stat {
+  font-size: 4.5rem; font-weight: 800; color: var(--yellow);
+  line-height: 1; letter-spacing: -0.04em; margin-bottom: 0.25rem;
+}
+.visual-label {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem;
+}
+.visual-pills { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.pill {
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 0.3rem 0.65rem;
+  border: 1px solid var(--border); color: var(--yellow2);
+}
+.accent-box {
+  position: absolute; background: var(--yellow); color: var(--ink);
+  padding: 0.9rem 1.1rem; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  right: -0.75rem; bottom: 1.5rem; max-width: 150px; line-height: 1.4;
+}
+
+/* ─── FULL HEADER ─────────────────────────── */
+.full-header { max-width: 900px; width: 100%; margin-bottom: 1.25rem; }
+.full-header .slide-heading { font-size: clamp(1.8rem, 4vw, 3rem); }
+
+/* ─── GRID SLIDES ─────────────────────────── */
+.slide-grid { justify-content: center; padding-top: 5rem; padding-bottom: 2rem; }
+
+/* ─── EVENT CARDS ─────────────────────────── */
+.event-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem; width: 100%; max-width: 900px;
+}
+.event-card {
+  border: 1px solid var(--border); padding: 1.75rem 1.25rem 1.25rem;
+  background: var(--navy2); position: relative;
+}
+.event-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(to right, var(--yellow), transparent);
+}
+.event-card-tag {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--yellow-dim); margin-bottom: 0.6rem;
+}
+.event-card-title { font-size: 1.2rem; font-weight: 700; color: var(--cream); margin-bottom: 0.65rem; line-height: 1.2; }
+.event-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+.event-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+.event-bullets li {
+  font-size: 0.72rem; color: var(--cream); opacity: 0.7;
+  display: flex; align-items: flex-start; gap: 0.45rem;
+}
+.event-bullets li::before { content: '→'; color: var(--yellow); flex-shrink: 0; font-size: 0.65rem; }
+
+/* ─── IT CARDS ────────────────────────────── */
+.it-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1rem; width: 100%; max-width: 900px;
+}
+.it-card {
+  border: 1px solid var(--border); background: var(--navy2);
+  padding: 1.5rem 1.5rem; position: relative; overflow: hidden;
+}
+.it-card::after {
+  content: attr(data-char); position: absolute; right: -0.5rem; bottom: -1.5rem;
+  font-size: 7rem; font-weight: 800; color: rgba(208,173,106,0.05);
+  line-height: 1; pointer-events: none; letter-spacing: -0.04em;
+}
+.it-num { font-size: 0.7rem; font-weight: 600; color: var(--yellow); letter-spacing: 0.2em; margin-bottom: 0.6rem; }
+.it-title { font-size: 1.3rem; font-weight: 700; color: var(--cream); line-height: 1.15; margin-bottom: 0.5rem; }
+.it-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+
+/* ─── PLATFORM CARDS ──────────────────────── */
+.platform-split {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.75rem; width: 100%; max-width: 900px;
+}
+.platform-card { background: var(--navy2); border: 1px solid var(--border); padding: 2.25rem 1.75rem; position: relative; }
+.platform-card.featured {
+  border-color: rgba(208,173,106,0.45);
+  background: linear-gradient(135deg, var(--navy2) 0%, rgba(208,173,106,0.04) 100%);
+}
+.platform-card.featured::before {
+  content: 'Флагман'; position: absolute; top: -1px; right: 1.5rem;
+  background: var(--yellow); color: var(--ink);
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; padding: 0.2rem 0.65rem;
+}
+.platform-icon-num {
+  font-size: 3.5rem; font-weight: 800; color: var(--yellow);
+  opacity: 0.18; line-height: 1; margin-bottom: 0.4rem; letter-spacing: -0.04em;
+}
+.platform-title { font-size: 1.35rem; font-weight: 700; color: var(--cream); line-height: 1.2; margin-bottom: 0.7rem; }
+.platform-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
+
+/* ─── AWARDS ──────────────────────────────── */
+.awards-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem; width: 100%; max-width: 900px;
+}
+.award-card {
+  border: 1px solid var(--border); padding: 1.75rem 1.25rem; position: relative;
+  transition: border-color 0.3s;
+}
+.award-card:hover { border-color: rgba(208,173,106,0.5); }
+.award-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--yellow); transition: width 0.4s ease;
+}
+.award-card:hover::after { width: 100%; }
+.award-org { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--yellow); margin-bottom: 0.65rem; }
+.award-name { font-size: 1.2rem; font-weight: 700; color: var(--cream); line-height: 1.2; margin-bottom: 0.85rem; }
+.award-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+.award-year { position: absolute; top: 1.25rem; right: 1.25rem; font-size: 0.65rem; font-weight: 600; color: var(--yellow-dim); letter-spacing: 0.15em; }
+
+/* ─── CTA ─────────────────────────────────── */
+#cta { text-align: center; align-items: center; background: var(--navy); }
+#cta::before {
+  content: ''; position: absolute; bottom: -20%; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(208,173,106,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-label { font-size: 10px; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--yellow); margin-bottom: 1.75rem; }
+.cta-title {
+  font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 800;
+  color: var(--cream); line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 1.25rem;
+}
+.cta-title em { font-style: normal; color: var(--yellow); }
+.cta-sub { font-size: 0.95rem; color: var(--muted); margin-bottom: 2.5rem; line-height: 1.6; max-width: 480px; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 1rem;
+  font-family: var(--f); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink); background: var(--yellow);
+  padding: 0.9rem 2.25rem; text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+.cta-btn:hover { background: var(--yellow2); transform: translateY(-2px); }
+.cta-arrow { display: inline-block; width: 20px; height: 1px; background: var(--ink); position: relative; }
+.cta-arrow::after {
+  content: ''; position: absolute; right: 0; top: -3px;
+  width: 6px; height: 6px;
+  border-right: 1.5px solid var(--ink); border-top: 1.5px solid var(--ink);
+  transform: rotate(45deg);
+}
+.cta-footer {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em;
+  color: var(--yellow-dim); text-align: center; white-space: nowrap;
+}
+
+/* ─── AI COURSES SLIDE ────────────────────── */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem; width: 100%; max-width: 960px;
+}
+.course-card {
+  background: var(--navy2);
+  border: 1px solid var(--border);
+  padding: 1.75rem 1.5rem;
+  position: relative;
+  transition: border-color 0.3s;
+  display: flex; flex-direction: column;
+}
+.course-card:hover { border-color: rgba(208,173,106,0.45); }
+.course-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(to right, var(--yellow), transparent);
+}
+.course-num {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--yellow-dim); margin-bottom: 0.5rem;
+}
+.course-icon {
+  font-size: 1.75rem; margin-bottom: 0.9rem; line-height: 1;
+}
+.course-title {
+  font-size: 1rem; font-weight: 700; color: var(--cream);
+  line-height: 1.25; margin-bottom: 0.6rem;
+}
+.course-dur {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--yellow);
+  background: rgba(208,173,106,0.1);
+  padding: 0.25rem 0.65rem; margin-bottom: 0.85rem;
+  border: 1px solid rgba(208,173,106,0.22);
+}
+.course-desc {
+  font-size: 0.8rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; flex: 1;
+}
+.course-tools {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+.tool-tag {
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid rgba(208,173,106,0.22);
+  color: rgba(208,173,106,0.85);
+}
+.course-ref {
+  font-size: 0.6rem; color: var(--muted); margin-top: 0.75rem;
+  opacity: 0.6; font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .courses-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .courses-grid { grid-template-columns: 1fr; }
+  .course-card  { padding: 1.4rem 1.1rem; }
+}
+
+/* ─── ANIMATIONS ──────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.slide.in-view .animate { animation: fadeUp 0.6s ease forwards; }
+.animate { opacity: 0; }
+.animate-d1 { animation-delay: 0.08s; }
+.animate-d2 { animation-delay: 0.22s; }
+.animate-d3 { animation-delay: 0.36s; }
+.animate-d4 { animation-delay: 0.50s; }
+.animate-d5 { animation-delay: 0.64s; }
+.animate-d6 { animation-delay: 0.78s; }
+
+/* ═══════════════════════════════════════════
+   TABLET  ≤ 900px
+═══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+
+  .slide { padding: 5rem 1.75rem 2.5rem; }
+  .slide-grid { padding-bottom: 2rem; }
+
+  .slide-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .slide-visual { height: auto; min-height: 240px; }
+  .visual-card { max-width: 100%; }
+  .accent-box { right: 0; bottom: 0; }
+
+  .event-cards { grid-template-columns: 1fr; gap: 1rem; }
+  .it-grid     { grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+  .platform-split { grid-template-columns: 1fr; gap: 1rem; }
+  .awards-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+  .full-header { margin-bottom: 1.5rem; }
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE  ≤ 600px
+═══════════════════════════════════════════ */
+@media (max-width: 600px) {
+  nav { padding: 0.9rem 1.25rem; }
+  .nav-logo { font-size: 11px; letter-spacing: 0.12em; }
+  .nav-dot { width: 5px; height: 5px; }
+
+  .slide { padding: 5rem 1.25rem 2rem; min-height: 100svh; }
+  .slide-grid { justify-content: flex-start; padding-top: 5rem; padding-bottom: 2rem; }
+
+  /* HERO */
+  .hero-eyebrow { font-size: 9px; letter-spacing: 0.28em; margin-bottom: 1.25rem; }
+  .hero-title   { font-size: clamp(2.6rem, 13vw, 4.5rem); margin-bottom: 1rem; }
+  .hero-subtitle { font-size: 0.88rem; margin-bottom: 2rem; }
+  .partner-badge { font-size: 10px; padding: 0.45rem 1rem; }
+
+  /* TEXT */
+  .slide-num    { font-size: 10px; margin-bottom: 0.75rem; }
+  .slide-heading { font-size: clamp(2rem, 10vw, 3rem); }
+  .full-header .slide-heading { font-size: clamp(1.6rem, 8vw, 2.25rem); }
+  .slide-desc   { font-size: 0.875rem; margin-bottom: 1.25rem; }
+  .benefit-list li { font-size: 0.82rem; }
+
+  /* VISUAL CARD */
+  .slide-visual  { height: auto; min-height: 0; margin-top: 1.5rem; }
+  .visual-stat   { font-size: 3.5rem; }
+  .accent-box    { position: static; margin-top: 1rem; max-width: 100%; }
+
+  /* CARDS */
+  .event-card, .it-card, .platform-card, .award-card {
+    padding: 1.5rem 1.1rem 1.1rem;
+  }
+  .it-grid { grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+  .event-card-title { font-size: 1.1rem; }
+  .it-title         { font-size: 1.4rem; }
+  .it-card::after   { font-size: 6rem; }
+  .platform-title   { font-size: 1.2rem; }
+  .award-name       { font-size: 1.1rem; }
+
+  /* CTA */
+  .cta-title  { font-size: clamp(2.4rem, 12vw, 4rem); }
+  .cta-sub    { font-size: 0.875rem; margin-bottom: 2rem; }
+  .cta-btn    { font-size: 0.72rem; padding: 0.85rem 1.75rem; }
+  .cta-footer { font-size: 0.6rem; }
+
+  /* SCROLL HINT */
+  .scroll-hint { bottom: 1rem; }
+  .scroll-arrow { height: 28px; }
+}
+
+/* ═══════════════════════════════════════════
+   SMALL MOBILE  ≤ 380px
+═══════════════════════════════════════════ */
+@media (max-width: 380px) {
+  .hero-title { font-size: 2.4rem; }
+  .nav-logo   { font-size: 10px; }
+  .slide      { padding-left: 1rem; padding-right: 1rem; }
+  .it-grid    { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">MetaFrame <span>×</span> VELOR</div>
+  <div class="nav-dots" id="navDots"></div>
+</nav>
+
+<!-- ═══ 1. HERO ═══ -->
+<section class="slide" id="hero" data-slide="0">
+  <div class="bg-grid"></div>
+  <p class="hero-eyebrow animate animate-d1">Стратегическое партнёрство · Центральная Азия</p>
+  <h1 class="hero-title animate animate-d2">Meta<em>Frame × VELOR</em></h1>
+  <p class="hero-subtitle animate animate-d3">
+    Технологии и гостеприимство — в единой экосистеме для индустрии сервиса Казахстана
+  </p>
+  <div class="hero-partners animate animate-d4">
+    <div class="partner-badge">MetaFrame</div>
+    <div class="partner-sep">×</div>
+    <div class="partner-badge">VELOR</div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ═══ 2. YOUTUBE ═══ -->
+<section class="slide" data-slide="1" style="background:var(--navy);">
+  <div class="bg-grid"></div>
+  <div class="slide-inner">
+    <div>
+      <p class="slide-num animate animate-d1">01 — YouTube направление</p>
+      <p class="slide-tag animate animate-d1">Контент</p>
+      <h2 class="slide-heading animate animate-d2">Открытая<em>Кухня</em></h2>
+      <p class="slide-desc animate animate-d3">
+        Фуд-блогеры и лайфстайл-авторы снимают контент в Training Kitchen и F&amp;B зоне VELOR. Не реклама — коллаборация. Органический охват без рекламного бюджета.
+      </p>
+      <ul class="benefit-list animate animate-d4">
+        <li>Нулевые затраты на продакшн для блогера</li>
+        <li>VELOR получает органический охват</li>
+        <li>Мастер-классы для аудитории блогера — новый лид-канал</li>
+      </ul>
+    </div>
+    <div class="slide-visual animate animate-d3">
+      <div class="visual-card">
+        <div class="visual-stat">0₸</div>
+        <div class="visual-label">Затраты на продакшн</div>
+        <div class="visual-pills">
+          <span class="pill">Training Kitchen</span>
+          <span class="pill">F&amp;B зона</span>
+          <span class="pill">Мастер-классы</span>
+          <span class="pill">Коллаборация</span>
+        </div>
+      </div>
+      <div class="accent-box">Органический охват без рекламы</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3. EVENTS ═══ -->
+<section class="slide slide-grid" data-slide="2" style="background:var(--ink);">
+  <div class="bg-grid"></div>
+  <div class="full-header animate animate-d1">
+    <p class="slide-tag">Ивент направления</p>
+    <h2 class="slide-heading">Три формата <em>событий</em></h2>
+  </div>
+  <div class="event-cards">
+    <div class="event-card animate animate-d2">
+      <p class="event-card-tag">Конкурс</p>
+      <h3 class="event-card-title">Сервис-ринг</h3>
+      <p class="event-card-desc">Открытые соревнования официантов, барменов и ресепшионистов. VELOR — площадка и организатор.</p>
+      <ul class="event-bullets">
+        <li>Медиа-освещение приходит само</li>
+        <li>Участники делятся в соцсетях</li>
+        <li>Призы от партнёров-отелей</li>
+      </ul>
+    </div>
+    <div class="event-card animate animate-d3">
+      <p class="event-card-tag">Регулярный формат</p>
+      <h3 class="event-card-title">Open Day + Мастер-классы</h3>
+      <p class="event-card-desc">Открытые дни: бесплатный мастер-класс ведёт к лиду на платный курс.</p>
+      <ul class="event-bullets">
+        <li>«Блюдо как в 5★ отеле»</li>
+        <li>«Работа с недовольным гостем»</li>
+        <li>Запись на full-программу</li>
+      </ul>
+    </div>
+    <div class="event-card animate animate-d4">
+      <p class="event-card-tag">Ежегодно</p>
+      <h3 class="event-card-title">Hospitality Forum</h3>
+      <p class="event-card-desc">Конференция по гостеприимству ЦА. Спикеры из Швейцарии и Dubai.</p>
+      <ul class="event-bullets">
+        <li>Государственная поддержка</li>
+        <li>Спонсоры — отельные сети</li>
+        <li>Трансляция → глобальный охват</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 4. IT ═══ -->
+<section class="slide slide-grid" data-slide="3" style="background:var(--navy);">
+  <div class="bg-grid"></div>
+  <div class="full-header animate animate-d1">
+    <p class="slide-tag">Информационные технологии</p>
+    <h2 class="slide-heading">Цифровые <em>продукты</em></h2>
+  </div>
+  <div class="it-grid">
+    <div class="it-card animate animate-d2" data-char="AI">
+      <p class="it-num">01</p>
+      <h3 class="it-title">AI-тренер сервиса</h3>
+      <p class="it-desc">Чат-бот или голосовой симулятор для отработки диалогов с гостями. Персонал тренируется в любое время — жалобы, апсейл, чек-ин.</p>
+      <ul class="benefit-list">
+        <li>Оценка ответов + рекомендации</li>
+        <li>Продаётся как SaaS корпоративным клиентам</li>
+      </ul>
+    </div>
+    <div class="it-card animate animate-d3" data-char="APP">
+      <p class="it-num">02</p>
+      <h3 class="it-title">Мобильное приложение</h3>
+      <p class="it-desc">Для выпускников и студентов — справочник стандартов сервиса, чек-листы, сертификаты и карьерные возможности.</p>
+      <ul class="benefit-list">
+        <li>Push-уведомления о мастер-классах</li>
+        <li>Community: выпускники + работодатели</li>
+      </ul>
+    </div>
+    <div class="it-card animate animate-d4" data-char="CV">
+      <p class="it-num">03</p>
+      <h3 class="it-title">Computer Vision для HoReCa</h3>
+      <p class="it-desc">Умные камеры следят за операционной реальностью — очереди, чистота, инциденты, остатки продуктов — всё фиксируется и уходит менеджеру в реальном времени.</p>
+      <ul class="benefit-list">
+        <li>Мониторинг очередей и загрузки зон</li>
+        <li>Контроль чистоты и стандартов сервиса</li>
+        <li>Обнаружение инцидентов + контроль закупок</li>
+      </ul>
+    </div>
+    <div class="it-card animate animate-d4" data-char="VC">
+      <p class="it-num">04</p>
+      <h3 class="it-title">Voice AI и Smart Room</h3>
+      <p class="it-desc">Голосовое управление номером без пульта и звонков на ресепшн. Гость говорит на своём языке — ИИ понимает и исполняет: свет, температура, заказ услуг.</p>
+      <ul class="benefit-list">
+        <li>Голосовое управление: свет, климат, ТВ, DND</li>
+        <li>Мультиязычность — русский, английский, казахский</li>
+        <li>Интеграция с PMS и сервисными службами отеля</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 5. AI COURSES ═══ -->
+<section class="slide slide-grid" data-slide="4" style="background:var(--ink);">
+  <div class="bg-grid"></div>
+  <div class="full-header animate animate-d1">
+    <p class="slide-tag">MetaFrame × VELOR — учебные программы</p>
+    <h2 class="slide-heading">AI-курсы <em>для студентов</em></h2>
+  </div>
+  <div class="courses-grid">
+
+    <div class="course-card animate animate-d2">
+      <p class="course-num">01</p>
+      <div class="course-icon">🎨</div>
+      <h3 class="course-title">AI-дизайн: фото и видео для гостиничного бизнеса</h3>
+      <span class="course-dur">4 недели</span>
+      <p class="course-desc">Генерация визуалов для меню, соцсетей, брендинга отеля. Создание промо-видео и reels без оператора и дизайнера. Идея — в готовый пост за 10 минут.</p>
+      <div class="course-tools">
+        <span class="tool-tag">Midjourney</span>
+        <span class="tool-tag">Runway</span>
+        <span class="tool-tag">Adobe Firefly</span>
+        <span class="tool-tag">Canva AI</span>
+      </div>
+      <p class="course-ref">↗ Практика: Swiss Education Group, FutureLearn</p>
+    </div>
+
+    <div class="course-card animate animate-d2">
+      <p class="course-num">02</p>
+      <div class="course-icon">📄</div>
+      <h3 class="course-title">AI-документация: стандарты, скрипты, отчёты</h3>
+      <span class="course-dur">3 недели</span>
+      <p class="course-desc">Написание SOP, скриптов для персонала, гостевых писем и внутренних отчётов с помощью ИИ. Шаблоны за минуты вместо часов ручного труда.</p>
+      <div class="course-tools">
+        <span class="tool-tag">ChatGPT</span>
+        <span class="tool-tag">Claude</span>
+        <span class="tool-tag">Notion AI</span>
+        <span class="tool-tag">Google Docs AI</span>
+      </div>
+      <p class="course-ref">↗ Практика: Cornell eCornell — Leveraging AI Operations</p>
+    </div>
+
+    <div class="course-card animate animate-d3">
+      <p class="course-num">03</p>
+      <div class="course-icon">💬</div>
+      <h3 class="course-title">AI-коммуникация: работа с гостями через ИИ</h3>
+      <span class="course-dur">4 недели</span>
+      <p class="course-desc">Настройка чат-ботов для ответов на запросы гостей. Анализ отзывов через AI, генерация персонализированных ответов. Сценарии — от чекина до жалоб.</p>
+      <div class="course-tools">
+        <span class="tool-tag">ChatGPT API</span>
+        <span class="tool-tag">Botster</span>
+        <span class="tool-tag">Zapier AI</span>
+        <span class="tool-tag">Tidio</span>
+      </div>
+      <p class="course-ref">↗ Практика: Cornell eCornell AI in Hospitality Certificate</p>
+    </div>
+
+    <div class="course-card animate animate-d4">
+      <p class="course-num">04</p>
+      <div class="course-icon">📱</div>
+      <h3 class="course-title">AI-маркетинг: SMM и контент для отеля</h3>
+      <span class="course-dur">4 недели</span>
+      <p class="course-desc">Автоматизация постинга, генерация текстов и визуалов для Instagram, TikTok и Telegram. Анализ трендов и аудитории через AI-инструменты без агентства.</p>
+      <div class="course-tools">
+        <span class="tool-tag">Buffer AI</span>
+        <span class="tool-tag">Jasper</span>
+        <span class="tool-tag">CapCut AI</span>
+        <span class="tool-tag">Synthesia</span>
+      </div>
+      <p class="course-ref">↗ Практика: FIU Chaplin School — AI & ML Hospitality</p>
+    </div>
+
+    <div class="course-card animate animate-d5">
+      <p class="course-num">05</p>
+      <div class="course-icon">🔮</div>
+      <h3 class="course-title">Промт-инжиниринг для сферы сервиса</h3>
+      <span class="course-dur">3 недели</span>
+      <p class="course-desc">Как правильно «разговаривать» с ИИ чтобы получать точные результаты. Практические промты для ресепшн, F&B, HR и менеджмента. Без кода — только логика.</p>
+      <div class="course-tools">
+        <span class="tool-tag">ChatGPT</span>
+        <span class="tool-tag">Claude</span>
+        <span class="tool-tag">Gemini</span>
+        <span class="tool-tag">Copilot</span>
+      </div>
+      <p class="course-ref">↗ Практика: Glion — AI & Innovation in Hospitality Leadership</p>
+    </div>
+
+    <div class="course-card animate animate-d5">
+      <p class="course-num">06</p>
+      <div class="course-icon">📊</div>
+      <h3 class="course-title">AI-аналитика: данные и прогнозы для менеджера</h3>
+      <span class="course-dur">6 недель</span>
+      <p class="course-desc">Прогнозирование загрузки, анализ отзывов и расходов без программиста. Excel + AI для принятия решений по ценообразованию и персоналу.</p>
+      <div class="course-tools">
+        <span class="tool-tag">Excel + BigML</span>
+        <span class="tool-tag">Power BI</span>
+        <span class="tool-tag">Google Sheets AI</span>
+      </div>
+      <p class="course-ref">↗ Практика: Cornell eCornell — Predictive Analytics Hospitality</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ 6. PLATFORMS ═══ -->
+<section class="slide slide-grid" data-slide="5" style="background:var(--navy);">
+  <div class="bg-grid"></div>
+  <div class="full-header animate animate-d1">
+    <p class="slide-tag">Большие форматы</p>
+    <h2 class="slide-heading">Системные <em>решения</em></h2>
+  </div>
+  <div class="platform-split">
+    <div class="platform-card featured animate animate-d2">
+      <div class="platform-icon-num">01</div>
+      <h3 class="platform-title">Платформа «Сертификат VELOR»</h3>
+      <p class="platform-desc">Публичный реестр сертифицированных специалистов. Аналог LinkedIn для индустрии сервиса ЦА.</p>
+      <ul class="benefit-list">
+        <li>Network effect: больше выпускников → больше работодателей</li>
+        <li>Монетизация через платный подбор</li>
+      </ul>
+    </div>
+    <div class="platform-card animate animate-d3">
+      <div class="platform-icon-num">02</div>
+      <h3 class="platform-title">Национальный стандарт сервиса</h3>
+      <p class="platform-desc">Партнёрство с Министерством туризма РК. VELOR — аккредитованный орган сертификации.</p>
+      <ul class="benefit-list">
+        <li>Обязательная сертификация — постоянный доход</li>
+        <li>PR на государственном уровне</li>
+        <li>Международное признание</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 7. AWARDS ═══ -->
+<section class="slide slide-grid" data-slide="6" style="background:var(--ink);">
+  <div class="bg-grid"></div>
+  <div class="full-header animate animate-d1">
+    <p class="slide-tag">Международные премии</p>
+    <h2 class="slide-heading">Цели <em>в регалиях</em></h2>
+  </div>
+  <div class="awards-grid">
+    <div class="award-card animate animate-d2">
+      <span class="award-year">2026</span>
+      <p class="award-org">Asia Awards Organization · Singapore</p>
+      <h3 class="award-name">Asia Hospitality Awards</h3>
+      <p class="award-desc">Тема 2026 — «Influential Asia». Категория лидерства и образования в гостеприимстве — прямое попадание.</p>
+    </div>
+    <div class="award-card animate animate-d3">
+      <span class="award-year">Ongoing</span>
+      <p class="award-org">Hozpitality · Global Online</p>
+      <h3 class="award-name">Hozpitality Excellence Awards</h3>
+      <p class="award-desc">Ежегодная международная премия. Категории — от лидерства до сервисных инноваций.</p>
+    </div>
+    <div class="award-card animate animate-d4">
+      <span class="award-year">2026</span>
+      <p class="award-org">World Travel Awards</p>
+      <h3 class="award-name">WTA Asia &amp; Oceania</h3>
+      <p class="award-desc">«Оскар» туриндустрии. Категория «Лучший обучающий центр». Финал 2026 — Мальдивы.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 8. CTA ═══ -->
+<section class="slide" id="cta" data-slide="7">
+  <div class="bg-grid"></div>
+  <p class="cta-label animate animate-d1">Начать сотрудничество</p>
+  <h2 class="cta-title animate animate-d2">Давайте<br><em>строить</em><br>вместе</h2>
+  <p class="cta-sub animate animate-d3">MetaFrame × VELOR — технологии на службе гостеприимства Центральной Азии</p>
+  <a href="mailto:hello@metaframe.kz" class="cta-btn animate animate-d4">
+    Написать нам <span class="cta-arrow"></span>
+  </a>
+  <div class="cta-footer">metaframe.kz &nbsp;·&nbsp; velor.kz</div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const navDotsEl = document.getElementById('navDots');
+  const dots = [];
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Слайд ' + (i + 1));
+    dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+    navDotsEl.appendChild(dot);
+    dots.push(dot);
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        const i = parseInt(e.target.dataset.slide);
+        dots.forEach((d, j) => d.classList.toggle('active', j === i));
+      }
+    });
+  }, { threshold: 0.4 });
+
+  slides.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
